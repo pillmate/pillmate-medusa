@@ -3,6 +3,8 @@ import { ContainerRegistrationKeys } from '@medusajs/framework/utils';
 import { createProductCategoriesWorkflow } from '@medusajs/medusa/core-flows';
 import guides from './guides.json';
 
+const GUIDES_CATEGORY_ID = 'pcat_01KEBGF0VJJM0G7DGX9SSY4T8A';
+
 export default async function createGuides({ container }: ExecArgs) {
   const logger = container.resolve(ContainerRegistrationKeys.LOGGER);
 
@@ -14,7 +16,8 @@ export default async function createGuides({ container }: ExecArgs) {
     input: {
       product_categories: guides.map((guide) => ({
         ...guide,
-        parent_category_id: 'pcat_01K82GGZMR3D086ED8YHJNM44Z',
+        is_active: true,
+        parent_category_id: GUIDES_CATEGORY_ID,
       })),
     }
   });

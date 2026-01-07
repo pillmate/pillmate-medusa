@@ -3,7 +3,7 @@ import { ContainerRegistrationKeys } from '@medusajs/framework/utils';
 import { createProductsWorkflow } from '@medusajs/medusa/core-flows';
 import products from './products-to-add.json';
 
-const DEFAULT_SALES_CHANNEL_ID = 'sc_01K7R4587VPHZKPV6365T3XV9F';
+const DEFAULT_SALES_CHANNEL_ID = 'sc_01KEBFNZ5ZZWS4EPK6851BZ355';
 
 export default async function createProducts({ container }: ExecArgs) {
   const logger = container.resolve(ContainerRegistrationKeys.LOGGER);

@@ -3,6 +3,8 @@ import { ContainerRegistrationKeys } from '@medusajs/framework/utils';
 import { createProductCategoriesWorkflow } from '@medusajs/medusa/core-flows';
 import supplements from './supplements.json';
 
+const SUPPLEMENTS_CATEGORY_ID = 'pcat_01KEBFZ9KA6FSCEN9SZNVH0CCC';
+
 export default async function createSupplements({ container }: ExecArgs) {
   const logger = container.resolve(ContainerRegistrationKeys.LOGGER);
 
@@ -14,7 +16,8 @@ export default async function createSupplements({ container }: ExecArgs) {
     input: {
       product_categories: supplements.map((supplement) => ({
         ...supplement,
-        parent_category_id: 'pcat_01K82GG2V4J1102JHJK3AMFE4W',
+        is_active: true,
+        parent_category_id: SUPPLEMENTS_CATEGORY_ID,
       })),
     }
   });
