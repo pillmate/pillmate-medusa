@@ -1,3 +1,5 @@
+import { HttpTypes } from "@medusajs/types/dist/bundles"
+
 export type FeaturedProduct = {
   id: string
   title: string
@@ -13,4 +15,25 @@ export type VariantPrice = {
   currency_code: string
   price_type: string
   percentage_diff: string
+}
+
+export type Guide = HttpTypes.StoreProductCategory & {
+  metadata: {
+    supplements: Supplements
+  }
+}
+
+export type Supplements = {
+  [key in SupplementTier]: Supplement[]
+}
+
+export type SupplementTier =
+  | "primary"
+  | "secondary"
+  | "promising"
+  | "unproven"
+  | "inadvisable"
+
+export type Supplement = HttpTypes.StoreProductCategory & {
+  purpose?: string
 }
