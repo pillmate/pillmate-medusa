@@ -30,3 +30,16 @@ export const getCategoryByHandle = cache(async function (
     { next: { tags: ["categories"] } }
   )
 })
+
+export const getCategoryById = cache(async function (
+  ids: string[]
+) {
+  return sdk.store.category
+    .list(
+      {
+        id: ids,
+        fields: "*products"
+      },
+      { next: { tags: ["categories"] } }
+    )
+})
