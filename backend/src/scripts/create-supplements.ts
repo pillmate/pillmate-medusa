@@ -3,7 +3,7 @@ import { ContainerRegistrationKeys } from '@medusajs/framework/utils';
 import { createProductCategoriesWorkflow } from '@medusajs/medusa/core-flows';
 import supplements from './supplements.json';
 
-const SUPPLEMENTS_CATEGORY_ID = 'pcat_01KEBFZ9KA6FSCEN9SZNVH0CCC';
+const SUPPLEMENTS_CATEGORY_ID = 'pcat_01KEE3M40EZGZQ4F5EHFT347YP';
 
 export default async function createSupplements({ container }: ExecArgs) {
   const logger = container.resolve(ContainerRegistrationKeys.LOGGER);

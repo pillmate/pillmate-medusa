@@ -3,7 +3,7 @@ import { ContainerRegistrationKeys } from '@medusajs/framework/utils';
 import { createProductCategoriesWorkflow } from '@medusajs/medusa/core-flows';
 import guides from './guides.json';
 
-const GUIDES_CATEGORY_ID = 'pcat_01KEBGF0VJJM0G7DGX9SSY4T8A';
+const GUIDES_CATEGORY_ID = 'pcat_01KEE3NG8GM3GBNFW3E5WGHMGS';
 
 export default async function createGuides({ container }: ExecArgs) {
   const logger = container.resolve(ContainerRegistrationKeys.LOGGER);
