@@ -17,10 +17,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${guide.name} | Medusa Store`,
+    title: `${guide.name} | Medusa Guides`,
     description: `${guide.description}`,
     openGraph: {
-      title: `${guide.name} | Medusa Store`,
+      title: `${guide.name} | Medusa Guides`,
       description: `${guide.description}`,
     },
   }
