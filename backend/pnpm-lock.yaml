@@ -81,6 +81,15 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.7
         version: 18.3.7(@types/react@18.3.27)
+      axios:
+        specifier: ^1.13.2
+        version: 1.13.2
+      csv-parse:
+        specifier: ^6.1.0
+        version: 6.1.0
+      csv-stringify:
+        specifier: ^6.6.0
+        version: 6.6.0
       jest:
         specifier: ^29.7.0
         version: 29.7.0(@types/node@20.19.25)(ts-node@10.9.2(@swc/core@1.5.7(@swc/helpers@0.5.17))(@types/node@20.19.25)(typescript@5.9.3))
@@ -4823,6 +4832,12 @@ packages:
 
   csv-parse@5.6.0:
     resolution: {integrity: sha512-l3nz3euub2QMg5ouu5U09Ew9Wf6/wQ8I++ch1loQ0ljmzhmfZYrH9fflS22i/PQEvsPvxCwxgz5q7UB8K1JO4Q==}
+
+  csv-parse@6.1.0:
+    resolution: {integrity: sha512-CEE+jwpgLn+MmtCpVcPtiCZpVtB6Z2OKPTr34pycYYoL7sxdOkXDdQ4lRiw6ioC0q6BLqhc6cKweCVvral8yhw==}
+
+  csv-stringify@6.6.0:
+    resolution: {integrity: sha512-YW32lKOmIBgbxtu3g5SaiqWNwa/9ISQt2EcgOq0+RAIFufFp9is6tqNnKahqE5kuKvrnYAzs28r+s6pXJR8Vcw==}
 
   cva@1.0.0-beta.1:
     resolution: {integrity: sha512-gznFqTgERU9q4wg7jfgqtt34+RUt9S5t0xDAAEuDwQEAXEgjdDkKXpLLNjwSxsB4Ln/sqWJEH7yhE8Ny0mxd0w==}
@@ -13960,6 +13975,10 @@ snapshots:
   csstype@3.2.3: {}
 
   csv-parse@5.6.0: {}
+
+  csv-parse@6.1.0: {}
+
+  csv-stringify@6.6.0: {}
 
   cva@1.0.0-beta.1(typescript@5.9.3):
     dependencies:
