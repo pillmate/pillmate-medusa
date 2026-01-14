@@ -1,18 +1,33 @@
 import { Text } from "@medusajs/ui"
 
+import { getProductsById } from "@lib/data/products"
 import { getProductPrice } from "@lib/util/get-product-price"
+import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "../thumbnail"
 import PreviewPrice from "./price"
-import { getProductsById } from "@lib/data/products"
-import { HttpTypes } from "@medusajs/types"
+
+type Product = HttpTypes.StoreProduct & {
+  metadata?: ProductMetadata
+}
+
+type ProductMetadata = {
+  purchase_options?: PurchaseOption[]
+  grade?: string
+  score?: number
+}
+
+type PurchaseOption = {
+  url: string
+  name: string
+}
 
 export default async function ProductPreview({
   product,
   isFeatured,
   region,
 }: {
-  product: HttpTypes.StoreProduct
+  product: Product
   isFeatured?: boolean
   region: HttpTypes.StoreRegion
 }) {
@@ -30,8 +45,11 @@ export default async function ProductPreview({
   })
 
   return (
-    <LocalizedClientLink href={`/products/${product.handle}`} className="group">
-      <div data-testid="product-wrapper">
+    <div data-testid="product-wrapper">
+      <LocalizedClientLink
+        href={`/products/${product.handle}`}
+        className="group"
+      >
         <Thumbnail
           thumbnail={product.thumbnail}
           images={product.images}
@@ -42,11 +60,43 @@ export default async function ProductPreview({
           <Text className="text-ui-fg-subtle" data-testid="product-title">
             {product.title}
           </Text>
-          <div className="flex items-center gap-x-2">
-            {cheapestPrice && <PreviewPrice price={cheapestPrice} />}
-          </div>
+          {product.metadata?.grade && (
+            <Text className="text-ui-fg-subtle" data-testid="product-grade">
+              {product.metadata.grade}
+            </Text>
+          )}
+          {product.metadata?.score && (
+            <Text className="text-ui-fg-subtle" data-testid="product-score">
+              {product.metadata.score}
+            </Text>
+          )}
         </div>
+      </LocalizedClientLink>
+      <div className="flex flex-col txt-compact-medium mt-4">
+        {product.metadata?.purchase_options && (
+          <ul>
+            {product.metadata.purchase_options.map(
+              (o: PurchaseOption, i: number) => (
+                <li key={i}>
+                  <a
+                    href={o.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-ui-fg-link underline"
+                  >
+                    {o.name}
+                  </a>
+                </li>
+              )
+            )}
+          </ul>
+        )}
+        {cheapestPrice && (
+          <div className="flex items-center gap-x-2">
+            <PreviewPrice price={cheapestPrice} />
+          </div>
+        )}
       </div>
-    </LocalizedClientLink>
+    </div>
   )
 }

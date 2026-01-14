@@ -8,11 +8,28 @@ import Accordion from "./accordion"
 import { HttpTypes } from "@medusajs/types"
 
 type ProductTabsProps = {
-  product: HttpTypes.StoreProduct
+  product: Product
+}
+
+type Product = HttpTypes.StoreProduct & {
+  metadata?: ProductMetadata
+}
+
+type ProductMetadata = {
+  purchase_options?: PurchaseOption[]
+}
+
+type PurchaseOption = {
+  url: string
+  name: string
 }
 
 const ProductTabs = ({ product }: ProductTabsProps) => {
   const tabs = [
+    {
+      label: "Purchase Options",
+      component: <PurchaseOptionsTab product={product} />,
+    },
     {
       label: "Product Information",
       component: <ProductInfoTab product={product} />,
@@ -37,6 +54,29 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
           </Accordion.Item>
         ))}
       </Accordion>
+    </div>
+  )
+}
+
+const PurchaseOptionsTab = ({ product }: ProductTabsProps) => {
+  const metadata = product.metadata as unknown as ProductMetadata
+  const purchase_options = metadata?.purchase_options || []
+
+  return (
+    <div className="text-small-regular py-8">
+      <div className="grid grid-cols-1 gap-y-8">
+        <div className="flex flex-col gap-x-2">
+          <ul className="list-disc mb-4">
+            {purchase_options.map((item, index) => (
+              <li key={index}>
+                <a href={item.url} target="_blank" rel="noopener noreferrer">
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   )
 }
