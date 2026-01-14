@@ -1,7 +1,5 @@
 import { Suspense } from "react"
 
-import RefinementList from "@modules/guides/components/refinement-list"
-import FilterProducts from "@modules/guides/components/refinement-list/filter-products"
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
 import Guides from "./guides"
 
