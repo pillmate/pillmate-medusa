@@ -15,12 +15,14 @@ const GuideInfo = ({ guide }: GuideInfoProps) => {
       >
         {guide.name}
       </Heading>
-      <Text
-        className="text-medium text-ui-fg-subtle whitespace-pre-line"
-        data-testid="guide-description"
-      >
-        {guide.description}
-      </Text>
+      {guide.description && (
+        <Text
+          className="text-medium text-ui-fg-subtle whitespace-pre-line"
+          data-testid="guide-description"
+        >
+          {guide.description}
+        </Text>
+      )}
     </div>
   )
 }
